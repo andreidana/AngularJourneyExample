@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Parameters } from '../parameters';
 
 @Component({
   selector: 'app-user-details',
@@ -8,15 +10,23 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class UserDetailsComponent implements OnInit {
   form: FormGroup;
+  routeParams: Parameters;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
-      firstName: new FormControl(null, Validators.required),
-      lastName: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email])
+      firstName: new FormControl(this.routeParams ? this.routeParams.firstName : null, Validators.required),
+      lastName: new FormControl(this.routeParams ? this.routeParams.lastName : null, Validators.required),
+      email: new FormControl(this.routeParams ? this.routeParams.email : null, [Validators.required, Validators.email])
     });
   }
 
+  reset() {
+    this.router.navigate([''], {state: null});
+  }
+
+  goToGender() {
+    this.router.navigate(['/gender'], {state: {data: this.form.value}});
+  }
 }

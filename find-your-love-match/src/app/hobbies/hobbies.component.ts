@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hobbies',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class HobbiesComponent implements OnInit {
   form: FormGroup;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -18,4 +19,7 @@ export class HobbiesComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.router.navigate([''], {state: null});
+  }
 }
