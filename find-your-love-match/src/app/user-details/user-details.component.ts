@@ -12,7 +12,9 @@ export class UserDetailsComponent implements OnInit {
   form: FormGroup;
   routeParams: Parameters;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.routeParams = <Parameters>this.router.getCurrentNavigation().extras.state;
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -23,10 +25,16 @@ export class UserDetailsComponent implements OnInit {
   }
 
   reset() {
+    this.routeParams = null;
+    this.form.reset();
     this.router.navigate([''], {state: null});
   }
 
   goToGender() {
-    this.router.navigate(['/gender'], {state: {data: this.form.value}});
+    this.routeParams = this.routeParams ? this.routeParams : <Parameters>{};
+    this.routeParams.firstName = this.form.value.firstName;
+    this.routeParams.lastName = this.form.value.lastName;
+    this.routeParams.email = this.form.value.email;
+    this.router.navigate(['/gender'], {state: this.routeParams});
   }
 }

@@ -1,3 +1,23 @@
-<p>
-  overview works!
-</p>
+<div class="container mt-5">
+  <!-- <form [formGroup]="form">
+      <div class="row">
+        <mat-form-field>
+          <mat-select placeholder="Hobbies" formControlName="hobbies" multiple>
+            <mat-option value="Reading">Reading</mat-option>
+            <mat-option value="Cycling">Cycling</mat-option>
+            <mat-option value="Football">Football</mat-option>
+            <mat-option value="Movies">Movies</mat-option>
+            <mat-option value="Singing">Singing</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+  </form> -->
+  <button class="btn btn-primary float-left m-1" (click)="reset()">Cancel</button>
+  <button class="btn btn-primary float-left m-1" (click)="goToHobbies()">Back</button>
+  <button class="btn btn-primary float-right m-1" (click)="save()">Save</button>
+</div>
