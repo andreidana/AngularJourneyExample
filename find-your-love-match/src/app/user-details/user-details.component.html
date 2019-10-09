@@ -1,3 +1,21 @@
-<p>
-  user-details works!
-</p>
+<div class="container mt-5">
+  <form [formGroup]="form">
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+      </div>
+  </form>
+  <button class="btn btn-primary float-left m-1">Cancel</button>
+  <button class="btn btn-primary float-right m-1">Next</button>
+</div>
