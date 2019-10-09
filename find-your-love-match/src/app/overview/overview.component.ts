@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Parameters } from '../parameters';
+import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-overview',
@@ -8,11 +10,11 @@ import { Parameters } from '../parameters';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
+  form: FormGroup;
   routeParams: Parameters;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service: BackendService) {
     this.routeParams = <Parameters>this.router.getCurrentNavigation().extras.state;
-    console.log(this.routeParams);
   }
 
   ngOnInit() {
@@ -30,6 +32,9 @@ export class OverviewComponent implements OnInit {
   }
 
   save() {
-    console.log('save');
+    this.service.saveUserDetails(this.routeParams).subscribe(
+      data => console.log('Sucesfully saved data!'),
+      error => console.log(error)
+    );
   }
 }

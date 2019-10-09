@@ -10,6 +10,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { GenderComponent } from './gender/gender.component';
 import { HobbiesComponent } from './hobbies/hobbies.component';
 import { OverviewComponent } from './overview/overview.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OverviewComponent } from './overview/overview.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
